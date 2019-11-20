@@ -1,5 +1,8 @@
 const express = require('express');
 const hbs = require('hbs');
+require('./hbs/helpers.js');
+
+const port = process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname + '/views/partials')
 
@@ -12,20 +15,16 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'hbs');
 
 
+
 app.get('/',(req,res) => {
     res.render('home',{
-        nombre:'Diego',
-        anio:new Date().getFullYear()
+        nombre:'diEgo paStoriza',
     });
 });
 
-app.get('/about',(req,res) => {
-    res.render('about',{
-        anio:new Date().getFullYear()
-    });
-});
+app.get('/about');
 
-app.listen(8080,()=> {
-    console.log('escuchando en el puerto 8080');
+app.listen(port,()=> {
+    console.log(`escuchando en el puerto ${port}`);
 });
 
